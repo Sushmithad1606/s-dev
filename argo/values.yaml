@@ -16,4 +16,4 @@ server:
       - hosts:
         - argos.kubeace.com
         # Based on the ingress controller used secret might be optional
-        secretName: argos.kubeace.com-tls
+        secretName: wildcard-tls
