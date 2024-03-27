@@ -12,8 +12,9 @@ server:
     annotations:
       nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
       nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
+      cert-manager.io/cluster-issuer: "letsencrypt-prod"
     extraTls:
       - hosts:
         - argos.kubeace.com
         # Based on the ingress controller used secret might be optional
-        secretName: wildcard-tls
+        secretName: argos.kubeace.com-tls-01
