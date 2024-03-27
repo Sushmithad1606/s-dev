@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: p005-grafana
+  namespace: default
+spec:
+  destination:
+    namespace: default
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    chart: grafana
+    helm:
+      values: |
+        ingress:
+          enabled: true
+          annotations: 
+             cert-manager.io/cluster-issuer: "letsencrypt-prod"
+             kubernetes.io/ingress.class: "nginx"
+          hosts:
+            - grafa.kubeace.com
+          tls: 
+           - secretName: grafa-kubeace-tls
+             hosts:
+               - grafa.kubeace.com
+    repoURL: https://grafana.github.io/helm-charts/
+    targetRevision: 7.3.7
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: false
