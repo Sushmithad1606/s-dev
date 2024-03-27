@@ -1,5 +1,5 @@
 global:
-  domain: argocd.example.com
+  domain: argos.kubeace.com
 
 configs:
   params:
@@ -14,6 +14,6 @@ server:
       nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
     extraTls:
       - hosts:
-        - argocd.example.com
+        - argos.kubeace.com
         # Based on the ingress controller used secret might be optional
-        secretName: wildcard-tls
+        secretName: argos.kubeace.com-tls
